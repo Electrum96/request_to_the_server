@@ -1,0 +1,17 @@
+.todo {
+    width: 200px;
+    border: 1px solid grey;
+    transition: 0.3s;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 5px;
+  }
+  
+  .todo:hover{
+    cursor: pointer;
+    border-color: aqua;
+  }
+  .todo_completed {
+    background-color: #be1a98;
+    text-decoration-line: line-through;
+  }

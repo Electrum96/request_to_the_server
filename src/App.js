@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import Todo from './components/todos/Todo';
 
-function App() {
+
+
+import { useEffect } from 'react';
+import { useState } from 'react';
+
+
+function App({}) {
+
+  const [todos, setTodos] = useState([]); //устанавливаем сотояние
+
+  console.log(todos);
+
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/todos') //отправляем запрос по url
+    .then(answer => answer.json()) // преобразуем ответ в json
+    .then(json => setTodos(json)) // обновляем состояние 
+    // .then(json => console.log(json))
+  } , [])
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+     {todos.map(item => <Todo item={item}/>)} //проходимся map по массиву и рендерим 
+    
     </div>
   );
 }
